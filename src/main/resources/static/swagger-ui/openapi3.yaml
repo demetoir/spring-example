@@ -1,0 +1,249 @@
+openapi: 3.0.1
+info:
+  title: My API
+  description: My API description
+  version: 0.1.0
+servers:
+- url: http://localhost:8080
+tags: []
+paths:
+  /api/v1/brand:
+    get:
+      tags:
+      - api
+      summary: ssefsefse
+      description: get brand by id but not found
+      operationId: brand-get-all
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api-v1-brand2068782257'
+              examples:
+                brand-get-all:
+                  value: |-
+                    {
+                      "timestamp" : "2022-12-27T09:47:25.796+00:00",
+                      "status" : 200,
+                      "message" : "OK",
+                      "data" : [ {
+                        "id" : 1,
+                        "name" : "dummy",
+                        "createdAt" : "2021-01-01T00:00:00",
+                        "modifiedAt" : "2021-01-01T00:00:00"
+                      } ]
+                    }
+  /api/v1/product:
+    get:
+      tags:
+      - api
+      summary: shit
+      description: 'get many product '
+      operationId: product-get-many/200
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api-v1-product2024380651'
+              examples:
+                product-get-many/200:
+                  value: |-
+                    {
+                      "timestamp" : "2022-12-27T09:47:27.469+00:00",
+                      "status" : 200,
+                      "message" : "OK",
+                      "data" : [ {
+                        "id" : 1,
+                        "name" : "name",
+                        "price" : 1000,
+                        "brand" : {
+                          "id" : 1,
+                          "name" : "name",
+                          "createdAt" : "2022-12-27T18:47:27.468624",
+                          "modifiedAt" : "2022-12-27T18:47:27.468627"
+                        },
+                        "createdAt" : "2022-12-27T18:47:27.468607",
+                        "modifiedAt" : "2022-12-27T18:47:27.468631",
+                        "status" : "ACTIVE"
+                      } ]
+                    }
+  /api/v1/brand/{id}:
+    get:
+      tags:
+      - api
+      summary: shit
+      description: get brand by id
+      operationId: brand-get-one/
+      parameters:
+      - name: id
+        in: path
+        description: brand id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api-v1-brand-id-248094684'
+              examples:
+                brand-get-one/200:
+                  value: |-
+                    {
+                      "timestamp" : "2022-12-27T09:47:26.063+00:00",
+                      "status" : 200,
+                      "message" : "OK",
+                      "data" : {
+                        "id" : 1,
+                        "name" : "name",
+                        "createdAt" : "2022-12-27T18:47:26.057295",
+                        "modifiedAt" : "2022-12-27T18:47:26.057315"
+                      }
+                    }
+        "404":
+          description: "404"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api-v1-brand-id-907764135'
+              examples:
+                brand-get-one/404:
+                  value: |-
+                    {
+                      "timestamp" : "2022-12-27T09:47:26.084+00:00",
+                      "status" : 404,
+                      "message" : "존재하지 않는 brand 입니다.",
+                      "data" : null
+                    }
+components:
+  schemas:
+    api-v1-brand-id-248094684:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            createdAt:
+              type: string
+              description: createdAt
+            modifiedAt:
+              type: string
+              description: modifiedAt
+            name:
+              type: string
+              description: name
+            id:
+              type: number
+              description: id
+          description: data
+        message:
+          type: string
+          description: 결과코드
+        status:
+          type: number
+          description: 결과메시지
+        timestamp:
+          type: string
+          description: 타임스탬프
+    api-v1-product2024380651:
+      type: object
+      properties:
+        data:
+          type: array
+          description: data
+          items:
+            type: object
+            properties:
+              createdAt:
+                type: string
+                description: createdAt
+              modifiedAt:
+                type: string
+                description: modifiedAt
+              price:
+                type: number
+                description: price
+              name:
+                type: string
+                description: name
+              id:
+                type: number
+                description: id
+              brand:
+                type: object
+                properties:
+                  createdAt:
+                    type: string
+                    description: brand createdAt
+                  modifiedAt:
+                    type: string
+                    description: brand modifiedAt
+                  name:
+                    type: string
+                    description: brand name
+                  id:
+                    type: number
+                    description: brand id
+              status:
+                type: string
+                description: status
+                enum:
+                - ACTIVE
+                - INACTIVE
+        message:
+          type: string
+          description: 결과코드
+        status:
+          type: number
+          description: 결과메시지
+        timestamp:
+          type: string
+          description: 타임스탬프
+    api-v1-brand-id-907764135:
+      type: object
+      properties:
+        message:
+          type: string
+          description: 결과코드
+        status:
+          type: number
+          description: 결과메시지
+        timestamp:
+          type: string
+          description: 타임스탬프
+    api-v1-brand2068782257:
+      type: object
+      properties:
+        data:
+          type: array
+          description: 데이터
+          items:
+            type: object
+            properties:
+              createdAt:
+                type: string
+                description: createAt
+              modifiedAt:
+                type: string
+                description: modifiedAt
+              name:
+                type: string
+                description: name
+              id:
+                type: number
+                description: id
+        message:
+          type: string
+          description: 결과코드
+        status:
+          type: number
+          description: 결과메시지
+        timestamp:
+          type: string
+          description: 타임스탬프
