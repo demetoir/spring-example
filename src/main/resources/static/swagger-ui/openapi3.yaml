@@ -11,8 +11,8 @@ paths:
     get:
       tags:
       - api
-      summary: ssefsefse
-      description: get brand by id but not found
+      summary: get many brand summary
+      description: get many brand by id
       operationId: brand-get-all
       responses:
         "200":
@@ -25,7 +25,7 @@ paths:
                 brand-get-all:
                   value: |-
                     {
-                      "timestamp" : "2022-12-27T09:47:25.796+00:00",
+                      "timestamp" : "2022-12-28T05:59:44.737+00:00",
                       "status" : 200,
                       "message" : "OK",
                       "data" : [ {
@@ -53,7 +53,7 @@ paths:
                 product-get-many/200:
                   value: |-
                     {
-                      "timestamp" : "2022-12-27T09:47:27.469+00:00",
+                      "timestamp" : "2022-12-28T05:59:45.189+00:00",
                       "status" : 200,
                       "message" : "OK",
                       "data" : [ {
@@ -63,11 +63,11 @@ paths:
                         "brand" : {
                           "id" : 1,
                           "name" : "name",
-                          "createdAt" : "2022-12-27T18:47:27.468624",
-                          "modifiedAt" : "2022-12-27T18:47:27.468627"
+                          "createdAt" : "2022-12-28T14:59:45.188152",
+                          "modifiedAt" : "2022-12-28T14:59:45.188155"
                         },
-                        "createdAt" : "2022-12-27T18:47:27.468607",
-                        "modifiedAt" : "2022-12-27T18:47:27.468631",
+                        "createdAt" : "2022-12-28T14:59:45.188132",
+                        "modifiedAt" : "2022-12-28T14:59:45.188159",
                         "status" : "ACTIVE"
                       } ]
                     }
@@ -75,7 +75,7 @@ paths:
     get:
       tags:
       - api
-      summary: shit
+      summary: get brand by id summary
       description: get brand by id
       operationId: brand-get-one/
       parameters:
@@ -96,14 +96,14 @@ paths:
                 brand-get-one/200:
                   value: |-
                     {
-                      "timestamp" : "2022-12-27T09:47:26.063+00:00",
+                      "timestamp" : "2022-12-28T05:59:44.947+00:00",
                       "status" : 200,
                       "message" : "OK",
                       "data" : {
                         "id" : 1,
                         "name" : "name",
-                        "createdAt" : "2022-12-27T18:47:26.057295",
-                        "modifiedAt" : "2022-12-27T18:47:26.057315"
+                        "createdAt" : "2022-12-28T14:59:44.942978",
+                        "modifiedAt" : "2022-12-28T14:59:44.943"
                       }
                     }
         "404":
@@ -116,41 +116,13 @@ paths:
                 brand-get-one/404:
                   value: |-
                     {
-                      "timestamp" : "2022-12-27T09:47:26.084+00:00",
+                      "timestamp" : "2022-12-28T05:59:44.964+00:00",
                       "status" : 404,
                       "message" : "존재하지 않는 brand 입니다.",
                       "data" : null
                     }
 components:
   schemas:
-    api-v1-brand-id-248094684:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            createdAt:
-              type: string
-              description: createdAt
-            modifiedAt:
-              type: string
-              description: modifiedAt
-            name:
-              type: string
-              description: name
-            id:
-              type: number
-              description: id
-          description: data
-        message:
-          type: string
-          description: 결과코드
-        status:
-          type: number
-          description: 결과메시지
-        timestamp:
-          type: string
-          description: 타임스탬프
     api-v1-product2024380651:
       type: object
       properties:
@@ -196,6 +168,34 @@ components:
                 enum:
                 - ACTIVE
                 - INACTIVE
+        message:
+          type: string
+          description: 결과코드
+        status:
+          type: number
+          description: 결과메시지
+        timestamp:
+          type: string
+          description: 타임스탬프
+    api-v1-brand-id-248094684:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            createdAt:
+              type: string
+              description: createdAt
+            modifiedAt:
+              type: string
+              description: modifiedAt
+            name:
+              type: string
+              description: name
+            id:
+              type: number
+              description: id
+          description: data
         message:
           type: string
           description: 결과코드

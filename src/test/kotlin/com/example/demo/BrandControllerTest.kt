@@ -41,10 +41,14 @@ import java.time.LocalDateTime
 // https://catsbi.oopy.io/edcaed06-6df9-4f19-a6f4-05902ad9878d
 
 // done 에러요청 어디까지 처리되는지 확인해보기
-// ! restdocs 는 성공요청만 문서를 만들어준다, 실패요청은 지원을 고려하지 않았다..?
-// ! 다만 restdocs api spec 은 실패 요청도 만들어는 주는데 뭔가 이상한다..
-// ! https://github.com/ePages-de/restdocs-api-spec/issues/140
-// ! 이전 이슈상으로 앞에먼 document identifier 같은거 끼리 붂여서 처리되는식으로 구현됨
+// ! restdocs 는 성공 요청만 snippet 만 만들어준다, 실패요청은 지원을 고려하지 않았다..?
+// ! restdocs api spec 은 실패 요청도 만들어 줄수는 있는긴한데
+// !    document identifier 같은거 끼리 붂여서 처리되는식으로 구현되어 OAS 상의 operationId 제대로 처리안된다
+// !    https://github.com/ePages-de/restdocs-api-spec/issues/140
+// !    위의 이슈상으로 동일한 prefix 의 operation id 의 경우 하나로 머지되도록 PR 머지는 됬는데
+// !    다른 OAS property 가 제대로 제어가 되지 않는다
+// !    snippet document 가 성공 케이스만 생성하도록 설계외어있어 가장 같은 operationId
+// !    실패 요청의 경우 payload
 
 // done swagger ui generate 이후 static resource 로 자동으로 복사 되도록 처리하기
 
@@ -103,7 +107,7 @@ class BrandControllerTest {
                     resource(
                         ResourceSnippetParameters.builder()
                             .description("get brand by id")
-                            .summary("shit")
+                            .summary("get brand by id summary")
                             .pathParameters(
                                 parameterWithName("id").description("brand id")
                             )
@@ -116,7 +120,7 @@ class BrandControllerTest {
                                 fieldWithPath("data.id").type(JsonFieldType.NUMBER).description("id"),
                                 fieldWithPath("data.name").type(JsonFieldType.STRING).description("name"),
                                 fieldWithPath("data.createdAt").type(JsonFieldType.STRING).description("createdAt"),
-                                fieldWithPath("data.modifiedAt").type(JsonFieldType.STRING).description("modifiedAt"),
+                                fieldWithPath("data.modifiedAt").type(JsonFieldType.STRING).description("modifiedAt")
                             )
                             .build()
                     )
@@ -143,8 +147,8 @@ class BrandControllerTest {
                     preprocessResponse(prettyPrint()),
                     resource(
                         ResourceSnippetParameters.builder()
-                            .description("get brand by id but not found")
-                            .summary("ssefsefse")
+                            .description("get brand by id but not found case")
+                            .summary("get brand by id but not found case summary")
                             .pathParameters(
                                 parameterWithName("id").description("brand id")
                             )
@@ -166,7 +170,7 @@ class BrandControllerTest {
             name = "dummy",
             id = 1L,
             createdAt = LocalDateTime.parse("2021-01-01T00:00:00"),
-            modifiedAt = LocalDateTime.parse("2021-01-01T00:00:00"),
+            modifiedAt = LocalDateTime.parse("2021-01-01T00:00:00")
         )
 
         val response = listOf(dummyBrand)
@@ -184,8 +188,8 @@ class BrandControllerTest {
                 preprocessResponse(prettyPrint()),
                 resource(
                     ResourceSnippetParameters.builder()
-                        .description("get brand by id but not found")
-                        .summary("ssefsefse")
+                        .description("get many brand by id")
+                        .summary("get many brand summary")
                         .responseFields(
                             fieldWithPath("timestamp").type(JsonFieldType.STRING).description("타임스탬프"),
                             fieldWithPath("message").type(JsonFieldType.STRING).description("결과코드"),
@@ -194,7 +198,7 @@ class BrandControllerTest {
                             fieldWithPath("data[].id").type(JsonFieldType.NUMBER).description("id"),
                             fieldWithPath("data[].name").type(JsonFieldType.STRING).description("name"),
                             fieldWithPath("data[].createdAt").type(JsonFieldType.STRING).description("createAt"),
-                            fieldWithPath("data[].modifiedAt").type(JsonFieldType.STRING).description("modifiedAt"),
+                            fieldWithPath("data[].modifiedAt").type(JsonFieldType.STRING).description("modifiedAt")
                         )
                         .build()
                 )
