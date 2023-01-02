@@ -3,7 +3,6 @@ package com.example.demo
 import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper.document
 import com.epages.restdocs.apispec.ResourceDocumentation.resource
 import com.epages.restdocs.apispec.ResourceSnippetParameters
-import com.example.domain.brand.controller.BrandController
 import com.example.domain.brand.controller.dto.ReadBrandDto
 import com.example.domain.product.controller.ProductController
 import com.example.domain.product.controller.dto.ReadProductDto
@@ -15,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
-import org.springframework.data.crossstore.ChangeSetPersister
 import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders
 import org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessRequest
@@ -41,9 +39,6 @@ class ProductControllerTest {
 
     @Test
     fun `get many product 200`() {
-        ChangeSetPersister.NotFoundException
-        BrandController
-
         val dto = ReadProductDto(
             id = 1L,
             name = "name",
