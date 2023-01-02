@@ -24,6 +24,9 @@ class BrandCreateRequest {
     val name: String? = null
 
     val dto: BrandCreateDto
+        get() {
+            TODO()
+        }
 }
 
 class BrandCreateDto {

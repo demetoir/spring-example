@@ -16,6 +16,3 @@ class BrandController(
 ) : AbstractController<Brand, CreateBrandDto, UpdateBrandDto, ReadBrandDto>(
     brandService
 )
-
-
-
